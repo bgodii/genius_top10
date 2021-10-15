@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+  genius-top10:
+    build: ./
+    command: python src/app.py
+    container_name: genius_top10
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/code
+    env_file: ./.env
+    stdin_open: true
+    tty: true
