@@ -12,10 +12,9 @@ services:
     depends_on:
       - redis
     env_file: ./.env
-    networks:
-      - api
     stdin_open: true
     tty: true
+
 
   redis:
     image: redis:alpine
@@ -23,13 +22,3 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
-    networks:
-      - redis
-    volumes:
-      - ./redis:/var/lib/postgresql/data
-
-networks:
-  api:
-    driver: bridge
-  redis:
-    external: true
