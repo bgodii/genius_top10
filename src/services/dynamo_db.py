@@ -21,21 +21,20 @@ class DynamoDb:
 
     def get(self, key_name, key_value):
         response = self.dynamo_db.get_item(Key={key_name: key_value})
-        return response["item"]
+
+        if response.get("Item"):
+            return response["Item"]
+        return {}
 
     def create(self, key_name, key_value, **kwargs):
         transaction_id = uuid4()
-        return self.dynamo_db.put_item(
+
+        self.dynamo_db.put_item(
             Item={
                 key_name: key_value,
-                "transaction_id": transaction_id.hex,
+                "transaction_id": str(transaction_id),
                 **kwargs,
             }
         )
 
-    def update(self, key_name, key_value, songs):
-        return self.dynamo_db.put_item(
-            Item={key_name: key_value},
-            UpdateExpression="SET songs=:val1",
-            ExpressionAttributeValues={":val1": songs},
-        )
+        return transaction_id
