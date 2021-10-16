@@ -9,6 +9,7 @@ flask-restful = "*"
 requests = "*"
 unidecode = "*"
 boto3 = "*"
+redis = "*"
 
 [dev-packages]
 pytest = "*"
