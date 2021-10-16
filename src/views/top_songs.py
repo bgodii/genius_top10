@@ -20,4 +20,7 @@ class TopSongs(Resource):
             response = response["meta"]
             return {"message": response["message"]}, response["status"]
 
-        return {"artist": artist, "top_songs": response["message"]}, 200
+        songs = response["message"]
+        top_songs = {idx + 1: value for (idx, value) in enumerate(songs)}
+
+        return {"artist": artist, "top_songs": top_songs}, 200
