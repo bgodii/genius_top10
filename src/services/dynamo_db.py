@@ -37,4 +37,4 @@ class DynamoDb:
             }
         )
 
-        return transaction_id
+        return str(transaction_id)
