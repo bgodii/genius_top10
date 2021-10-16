@@ -21,6 +21,7 @@ class TopSongs(Resource):
         ).lower()  # remove accents and transform to lowercase
 
         cache = request_data["cache"]
+        print("\n{}\n".format(cache))
         artist_data = self.dynamo_db.get("artist_name", artist)
 
         if cache and artist_data:
@@ -42,6 +43,11 @@ class TopSongs(Resource):
         transaction_id = self.dynamo_db.create(
             key_name="artist_name", key_value=artist, songs=songs
         )
+
+        transaction_id = {
+            "new": transaction_id,
+            "old": artist_data.get("transaction_id"),
+        }
 
         self.redis.manage_lists(transaction_id, songs)
         songs_sorted = Helpers.create_enumerate_song_list(songs)
