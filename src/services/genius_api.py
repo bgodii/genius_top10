@@ -4,8 +4,8 @@ import requests
 
 
 class GeniusApi:
-    SEARCH_URL = "https://api.genius.com/search?q={}&text_format=plain"
-    AUTH_TOKEN = os.environ.get("AUTH_TOKEN", None)
+    SEARCH_URL = "https://api.genius.com/search?q={}"
+    AUTH_TOKEN = os.environ.get("GENIUS_AUTH_TOKEN", None)
 
     def get_top_songs(self, artist_name) -> list:
         url = self.SEARCH_URL.format(artist_name)
@@ -24,5 +24,7 @@ class GeniusApi:
 
     def _extract_top_songs(self, response) -> list:
         hits = response.get("hits", None)
-        song_names = [hit.get("result", {}).get("title") for hit in hits]
+        song_names = [
+            hit.get("result", {}).get("title").lower() for hit in hits
+        ]
         return song_names
