@@ -19,6 +19,7 @@ Após adicionar as variáveis de ambiente, na pasta raiz do projeto, executar o 
 
 ### Instruções da API
 API esta exposta na porta `8080`, logo é acessavel a partir do endereço `localhost:8080/`. Ela possui apenas um `endpoint`.
+
 `top10`: Neste endpoint podemos consultar as musicas mais populares de um determinado artista. Ela aceita dois parametros via `query string` sendo eles:
 - artist: Parametro string obrigatorio, onde será usado para consultar nas apis externas o artista desejado, e assim retornar suas musicas mais populares.
 - cache: Parametro bool opcional. Utilizado para utilizar os dados que estão em cache caso o mesmo exista. O não envio do parametro indica que será utilizado os dados em cache.
