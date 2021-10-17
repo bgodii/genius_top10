@@ -26,7 +26,7 @@ API esta exposta na porta `8080`, logo é acessavel a partir do endereço `local
 Exemplo de requisição:
 `GET http://localhost:8080/top10?artist=michel%20telo&cache=false`
 
-`
+```json
 {
   "artist": "michel telo",
   "top_songs": {
@@ -42,7 +42,7 @@ Exemplo de requisição:
     "10": "eu te amo e open bar"
   }
 }
-`
+```
 
 ### Testes
 A aplicação também possui alguns testes unitarios, para garantir o funcionamento de seus serviços, para executa-los utilize o comando: `docker container exec genius_top10 make tests`
