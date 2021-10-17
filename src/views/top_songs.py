@@ -27,7 +27,8 @@ class TopSongs(Resource):
             cache_data = self.redis.get_list(artist_data["transaction_id"])
             songs_sorted = Helpers.create_enumerate_song_list(cache_data)
 
-            return {"artist": artist, "top_songs": songs_sorted}, 200
+            if songs_sorted:
+                return {"artist": artist, "top_songs": songs_sorted}, 200
 
         response = self.genius_api.get_top_songs(artist)
 
