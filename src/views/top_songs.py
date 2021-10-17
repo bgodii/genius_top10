@@ -21,7 +21,6 @@ class TopSongs(Resource):
         ).lower()  # remove accents and transform to lowercase
 
         cache = request_data["cache"]
-        print("\n{}\n".format(cache))
         artist_data = self.dynamo_db.get("artist_name", artist)
 
         if cache and artist_data:
