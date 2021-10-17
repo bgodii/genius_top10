@@ -1,4 +1,6 @@
-FROM python:3.8-alpine
+FROM python:3.8
+
+RUN apt-get update && apt-get install make
 
 RUN pip install --upgrade pip
 RUN pip install pipenv
