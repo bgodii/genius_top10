@@ -32,7 +32,7 @@ class TopSongs(Resource):
 
         response = self.genius_api.get_top_songs(artist)
 
-        if not response:
+        if not response.get("message"):
             return {"message": "not resource"}, 404
         elif response.get("meta", {}):
             response = response["meta"]
