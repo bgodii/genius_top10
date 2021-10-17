@@ -54,5 +54,5 @@ A aplicação também possui alguns testes unitarios, para garantir o funcioname
 - [Docker](https://www.docker.com/) e [Docker Compose](https://docs.docker.com/compose/): Container para receber e executar a aplicação, dessa forma tornando mais facil execução por outros ambiente e adição de novas ferramentas.
 - [DynamoDB](https://aws.amazon.com/pt/dynamodb/): Banco de dados não relacional dos serviços de cloud da AWS
 - [Redis](https://redis.io/): Banco chave valor usado como banco de dados em memória cache
-
+- [Genius API](https://docs.genius.com/): API onde é consultado os artistas e suas musicas mais populares
 
